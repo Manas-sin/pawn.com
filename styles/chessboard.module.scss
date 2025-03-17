@@ -1,0 +1,177 @@
+
+.chessSquare {
+  width: 60px;
+  height: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 32px;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+.light {
+  background: #ebecd0;
+}
+
+.dark {
+  background: #739552;
+}
+
+.chessPiece {
+  cursor: grab;
+  transition: transform 0.2s ease;
+}
+
+.chessPiece:active {
+  cursor: grabbing;
+  transform: scale(1.1);
+}
+
+.chessSquare:hover {
+  background: rgb(222, 230, 118);
+}
+
+.chessPiece {
+  width: 60px; // Adjust width
+  height: 20px; // Reduce height
+  object-fit: contain; // Keeps the image proportionate
+}
+
+.container {
+  display: flex;
+  gap: 20px;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  align-content: normal;
+
+  justify-content: normal;
+  align-items: center;
+}
+.boardWrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.chessboard {
+  display: grid;
+  grid-template-columns: repeat(8, 60px); /* Adjust square size */
+  grid-template-rows: repeat(8, 60px);
+  border: 2px solid #333;
+}
+
+.chessSquare {
+  width: 60px;
+  height: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.attacked {
+  background-color: rgba(
+    255,
+    0,
+    0,
+    0.3
+  ) !important; // Red overlay for attacked squares
+}
+
+//   .light {
+//     background-color: #f0d9b5;
+//   }
+
+//   .dark {
+//     background-color: #b58863;
+//   }
+
+.chessPiece {
+  width: 50px;
+  height: 50px;
+  
+}
+
+.shake {
+  animation: shake 0.5s;
+}
+
+@keyframes shake {
+  0% {
+    transform: translate(0, 0);
+  }
+  25% {
+    transform: translate(-5px, 0);
+  }
+  50% {
+    transform: translate(5px, 0);
+  }
+  75% {
+    transform: translate(-5px, 0);
+  }
+  100% {
+    transform: translate(0, 0);
+  }
+}
+
+.controls {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-top: 20px;
+}
+
+.gameStatus {
+  font-weight: bold;
+}
+
+.castlingRights {
+  font-size: 14px;
+}
+
+.moveHistory {
+  max-height: 200px;
+  overflow-y: auto;
+  padding: 10px;
+  border: 1px solid #ccc;
+}
+
+.moveHistory ul {
+  list-style: none;
+  padding: 0;
+}
+
+.boardpanel {
+  display: flex;
+  align-items: flex-end;
+  gap: 2rem;
+}
+
+.piecesInfo {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  max-width: 80px;
+  margin-top: 20px;
+
+  h3 {
+    font-size: 10px;
+    margin-bottom: 1rem;
+  }
+
+  .pieceIcon {
+    width: 2px;  /* Reduce width */
+    height: 10px; /* Reduce height */
+    margin: 1px;  /* Adjust spacing */
+    object-fit: contain;
+  }
+  
+}
+
+.profileImage {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  object-fit: cover;
+  display: block; /* Ensure it’s visible */
+}

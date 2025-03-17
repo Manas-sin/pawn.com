@@ -1,0 +1,265 @@
+// Welcome.module.scss
+
+.container {
+    flex-direction: column;
+    height: 100vh;
+    width: 150px;
+    padding: 2rem;
+    background-color: #f9f9f9;
+    border-radius: 20px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.315);
+    position: fixed;
+    top: 0;
+    left: 0;
+    align-items: center;
+    margin-left: 2rem;
+    width: 100%;
+}
+
+.wrapper {
+    display: flex;
+    min-height: 100vh; // Full height
+    width: 100%;
+}
+
+/* Left Sidebar */
+.sidebar {
+    width: 250px; // Fixed width for the sidebar
+    background-color: #07204e;
+    color: white;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    flex-shrink: 0; // Prevents shrinking
+}
+
+
+/* This wrapper pushes the button down */
+.contentWrapper {
+    flex-grow: 1;
+    /* Takes up remaining space */
+    width: 100%;
+    overflow-y: auto;
+}
+
+
+
+.welcome {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #ffffff;
+
+
+}
+
+.profileContainer {
+    position: relative;
+    /* Ensures child elements can be absolutely positioned */
+    display: inline-block;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+.profileImage {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    margin-bottom: 10px;
+}
+
+
+.status {
+    position: absolute;
+    bottom: 5px;
+    /* Adjust position relative to the profile image */
+    right: 5px;
+    /* Adjust position relative to the profile image */
+    width: 15px;
+    /* Status dot size */
+    height: 15px;
+    border-radius: 50%;
+    z-index: 2;
+}
+
+
+
+
+.title {
+    font-size: 1.3rem;
+    margin-top: 15px;
+    color: #444;
+    font-weight: bold;
+}
+
+.email {
+    font-size: 1rem;
+    color: #555;
+    margin-top: 5px;
+}
+
+
+/* Sign Out Button */
+.button {
+    margin-top: auto;
+    padding: 10px;
+    background-color: red;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+
+    &:hover {
+        background-color: darkred;
+    }
+}
+
+
+.button.signOut {
+    width: 100%;
+    /* Full width */
+    padding: 12px 15px;
+    /* Ensure visibility */
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+    font-size: 1rem;
+    font-weight: bold;
+    transition: background 0.3s ease;
+    background-color: #dc3545;
+    color: white;
+    text-align: center;
+
+    /* Push the button to the bottom */
+    margin-top: 2remauto;
+
+    /* Ensure button height */
+    min-height: 45px;
+}
+
+/* Hover effect */
+.button.signOut:hover {
+    background-color: #a71d2a;
+}
+
+.movesTitle {
+    font-size: 1.2rem;
+    margin-top: 20px;
+    font-weight: bold;
+    color: #333;
+}
+
+.movesList {
+    list-style: none;
+    padding: 0;
+    margin-top: 10px;
+    width: 100%;
+    max-width: 300px;
+
+    .moveItem {
+        background-color: #ddd;
+        padding: 8px 12px;
+        border-radius: 5px;
+        margin-top: 5px;
+        text-align: center;
+        font-weight: bold;
+        color: #333;
+    }
+}
+
+.loading {
+    text-align: center;
+    font-size: 1.2rem;
+    color: #555;
+}
+
+.error {
+    text-align: center;
+    font-size: 1.2rem;
+    color: red;
+}
+
+
+
+/* Right Content Area */
+
+
+
+
+
+// .textarea {
+//     width: 100%;
+//     height: 200px;
+//     padding: 10px;
+//     font-size: 1rem;
+//     border-radius: 5px;
+//     border: 1px solid #ccc;
+//     outline: none;
+//     resize: none;
+
+//     &:focus {
+//         border-color: #007bff;
+//         box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+//     }
+// }
+
+/* Text Area Section */
+.contentArea {
+    flex-grow: 1; // Takes the remaining space
+    padding: 20px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.contentArea h1 {
+    font-size: 2rem; // Adjust the font size
+    color: #0077ff; // Change the text color
+    font-weight: bold; // Make the text bold
+    text-align: center; // Center the text
+    margin-bottom: 15px; // Add some spacing below
+    align-items: center;
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    z-index: 1;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+.contentArea img {
+    size: 2rem;
+    height: 5rem;
+    z-index: inherit;
+    z-index: 0;
+}
+
+
+.gameTitle {
+    display: flex;
+    align-items: center; /* Align items vertically */
+    gap: 0px; /* Add spacing between image and text */
+
+    
+  }
+  
+  .gameTitle img {
+    width: 8rem; /* Adjust image size */
+    height: 10rem;
+    object-fit: contain;
+    z-index: 11;
+    margin-right: -3.0rem ;
+
+  }
+  
+  .gameTitle h1 {
+    font-size: 30px; /* Adjust font size */
+    margin: 0; /* Remove default margin */
+    margin-top: 2rem;
+    z-index: 0px;
+  }
+  
+
+//chessboard.ts
+
