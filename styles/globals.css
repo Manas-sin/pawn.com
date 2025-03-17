@@ -1,9 +1,0 @@
-/* @tailwind base;
-@tailwind components;
-@tailwind utilities;
-.test-bg {
-  @apply bg-blue-900;
-} */
-body{
-  margin: 0%;
-}

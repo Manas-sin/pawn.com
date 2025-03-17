@@ -43,7 +43,8 @@ export const authOptions: NextAuthOptions = {
           name: user.name,
           email: user.email,
           image: user.image || profile?.picture || null, // Use Google picture if available
-          password: account?.provider === "credentials" ? user.password : undefined,
+          password:
+            account?.provider === "credentials" ? user.password : undefined,
         });
         user.id = newUser._id.toString();
         isNewUser = true;
