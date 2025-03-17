@@ -86,10 +86,10 @@ export const authOptions: NextAuthOptions = {
     },
   },
   pages: {
-    signIn: "/signin",
-    signOut: "/signin",
-    error: "/signin",
-    verifyRequest: "/signin",
+    signIn: "/signin/signin", // Updated to match your folder structure
+    signOut: "/signin/signin",
+    error: "/signin/signin",
+    verifyRequest: "/signin/signin",
     newUser: "/welcome",
   },
   session: {
