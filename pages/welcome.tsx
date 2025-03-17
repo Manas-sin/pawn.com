@@ -5,6 +5,7 @@ import { connectSocket, getSocket } from "../utils/socket";
 import styles from "../styles/welcome.module.scss";
 import Chessboard from "../components/Chess";
 import { Chess } from "chess.js";
+import Image from 'next/image';
 
 interface Square {
   square: string;
@@ -167,7 +168,8 @@ const Welcome: React.FC = () => {
       <div className={styles.contentArea}>
         <div className={styles.gameTitle}>
           
-        <img src="/image/pawn.png" alt="Pawn Logo" />
+        {/* <img src="/image/pawn.png" alt="Pawn Logo" /> */}
+        <Image src="/image/pawn.png" alt="Pawn Logo"/>
           <h1>Pawn.com</h1>
         </div>
         {gameId && playerColor ? (

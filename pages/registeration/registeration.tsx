@@ -12,7 +12,7 @@ import {
   GoogleIcon,
   FacebookIcon,
   SitemarkIcon,
-} from "../components/customicon";
+} from "@/components/customicon";
 import { signIn } from "next-auth/react";
 import { useRouter } from "next/router";
 import toast, { Toaster } from "react-hot-toast";

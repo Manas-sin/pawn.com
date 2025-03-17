@@ -16,7 +16,7 @@ import {
   GoogleIcon,
   FacebookIcon,
   SitemarkIcon,
-} from "../../components/customicon";
+} from "@/components/customicon";
 import { signIn } from "next-auth/react";
 import { useRouter } from "next/router"; // Import useRouter
 import { toast } from "react-toastify";
