@@ -2,12 +2,12 @@
   "name": "chessproj",
   "version": "0.1.0",
   "private": true,
-"scripts": {
-  "dev": "concurrently \"next dev\" \"npx ts-node server/server.ts\"",
-  "build": "next build",
-  "start": "concurrently \"next start\" \"npx ts-node server/server.ts\"",
-  "lint": "next lint"
-},
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint"
+  },
   "dependencies": {
     "@emotion/react": "^11.14.0",
     "@emotion/styled": "^11.14.0",
@@ -21,7 +21,6 @@
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
     "crypto": "^1.0.1",
-    "express": "^4.21.2",
     "lucide-react": "^0.477.0",
     "mongoose": "^8.11.0",
     "next": "^15.2.0",

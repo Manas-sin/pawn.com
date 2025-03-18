@@ -1,6 +1,8 @@
 import { io, Socket } from "socket.io-client";
 
-const SOCKET_URL = process.env.NEXT_PUBLIC_SOCKET_URL || "http://localhost:4000";
+const SOCKET_URL =
+  process.env.NEXT_PUBLIC_SOCKET_URL ||
+  "https://chess-backend-websocket.onrender.com";
 
 let socket: Socket | null = null;
 
@@ -15,11 +17,22 @@ export const connectSocket = (email: string): Socket | null => {
       reconnectionDelay: 2000,
     });
 
-    socket.on("connect", () => console.log("✅ Connected to WebSocket:", socket?.id));
-    socket.on("disconnect", () => console.warn("⚠️ Disconnected. Attempting reconnect..."));
-    socket.on("connect_error", (error) => console.error("❌ WebSocket error:", error.message));
+    socket.on("connect", () =>
+      console.log("✅ Connected to WebSocket:", socket?.id)
+    );
+    socket.on("disconnect", () =>
+      console.warn("⚠️ Disconnected. Attempting reconnect...")
+    );
+    socket.on("connect_error", (error) =>
+      console.error("❌ WebSocket error:", error.message)
+    );
   } else {
-    console.log("Socket already exists:", socket.id, "Connected:", socket.connected);
+    console.log(
+      "Socket already exists:",
+      socket.id,
+      "Connected:",
+      socket.connected
+    );
   }
   return socket;
 };
