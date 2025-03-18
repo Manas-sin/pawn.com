@@ -109,7 +109,7 @@ export default function SignInCard() {
 
       try {
         const response = await fetch(
-          "http://localhost:3000/api/signin",
+          "/api/signin",
           requestOptions
         );
         const result = await response.json();

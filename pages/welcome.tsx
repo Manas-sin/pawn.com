@@ -5,7 +5,7 @@ import { connectSocket, getSocket } from "../utils/socket";
 import styles from "../styles/welcome.module.scss";
 import Chessboard from "../components/Chess";
 import { Chess } from "chess.js";
-import Image from 'next/image';
+import Image from "next/image";
 
 interface Square {
   square: string;
@@ -19,7 +19,8 @@ interface Player {
   color: "w" | "b";
 }
 
-const initialBoardState: (Square | null)[][] = new Chess().board() as (Square | null)[][];
+const initialBoardState: (Square | null)[][] =
+  new Chess().board() as (Square | null)[][];
 
 const Welcome: React.FC = () => {
   const { data: session, status } = useSession();
@@ -27,7 +28,8 @@ const Welcome: React.FC = () => {
   const [isConnected, setIsConnected] = useState<boolean>(false);
   const [gameId, setGameId] = useState<string | null>(null);
   const [playerColor, setPlayerColor] = useState<"w" | "b" | null>(null);
-  const [boardData, setBoardData] = useState<(Square | null)[][]>(initialBoardState);
+  const [boardData, setBoardData] =
+    useState<(Square | null)[][]>(initialBoardState);
   const [opponentEmail, setOpponentEmail] = useState<string>("");
   const [profileImageSrc, setProfileImageSrc] = useState<string | null>(null); // State for image source
 
@@ -62,31 +64,54 @@ const Welcome: React.FC = () => {
       setIsConnected(false);
     });
 
-    socket.on("game_created", ({ gameId, color }: { gameId: string; color: "w" | "b" }) => {
-      console.log(`Game created: ${gameId}, Color: ${color}`);
-      setGameId(gameId);
-      setPlayerColor(color);
-    });
-
-    socket.on("game_invite", ({ gameId, from }: { gameId: string; from: string }) => {
-      console.log(`Received game invite from ${from} for game ${gameId}`);
-      if (confirm(`Accept game invite from ${from}?`)) {
-        socket.emit("join_game", { gameId });
+    socket.on(
+      "game_created",
+      ({ gameId, color }: { gameId: string; color: "w" | "b" }) => {
+        console.log(`Game created: ${gameId}, Color: ${color}`);
         setGameId(gameId);
-        setPlayerColor("b");
+        setPlayerColor(color);
       }
-    });
+    );
 
-    socket.on("game_started", ({ gameId, players, fen, turn }: { gameId: string; players: Player[]; fen: string; turn: "w" | "b" }) => {
-      console.log(`Game started: ${gameId}, Players: ${JSON.stringify(players)}, FEN: ${fen}, Turn: ${turn}`);
-      const myPlayer = players.find((p) => p.email === session.user.email);
-      if (myPlayer) {
-        setGameId(gameId);
-        setPlayerColor(myPlayer.color);
-        const newGame = new Chess(fen);
-        setBoardData(newGame.board() as (Square | null)[][]);
+    socket.on(
+      "game_invite",
+      ({ gameId, from }: { gameId: string; from: string }) => {
+        console.log(`Received game invite from ${from} for game ${gameId}`);
+        if (confirm(`Accept game invite from ${from}?`)) {
+          socket.emit("join_game", { gameId });
+          setGameId(gameId);
+          setPlayerColor("b");
+        }
       }
-    });
+    );
+
+    socket.on(
+      "game_started",
+      ({
+        gameId,
+        players,
+        fen,
+        turn,
+      }: {
+        gameId: string;
+        players: Player[];
+        fen: string;
+        turn: "w" | "b";
+      }) => {
+        console.log(
+          `Game started: ${gameId}, Players: ${JSON.stringify(
+            players
+          )}, FEN: ${fen}, Turn: ${turn}`
+        );
+        const myPlayer = players.find((p) => p.email === session.user.email);
+        if (myPlayer) {
+          setGameId(gameId);
+          setPlayerColor(myPlayer.color);
+          const newGame = new Chess(fen);
+          setBoardData(newGame.board() as (Square | null)[][]);
+        }
+      }
+    );
 
     socket.on("error", (data: { message: string }) => {
       console.log("Error from server:", data.message);
@@ -118,7 +143,9 @@ const Welcome: React.FC = () => {
     socket.emit("init_game", { opponentEmail });
   };
 
-  const handleImageError = (e: React.SyntheticEvent<HTMLImageElement, Event>) => {
+  const handleImageError = (
+    e: React.SyntheticEvent<HTMLImageElement, Event>
+  ) => {
     console.log("Image failed to load:", e.currentTarget.src);
     if (profileImageSrc !== "/default-profile.png") {
       setProfileImageSrc("/default-profile.png"); // Switch to fallback once
@@ -142,7 +169,9 @@ const Welcome: React.FC = () => {
               onError={handleImageError}
             />
             <p
-              className={`${styles.status} ${isConnected ? styles.connected : styles.disconnected}`}
+              className={`${styles.status} ${
+                isConnected ? styles.connected : styles.disconnected
+              }`}
             >
               {isConnected ? "🟢" : "🔴"}
             </p>
@@ -160,16 +189,18 @@ const Welcome: React.FC = () => {
             </div>
           )}
         </div>
-        <button onClick={() => signOut()} className={`${styles.button} ${styles.signOut}`}>
+        <button
+          onClick={() => signOut()}
+          className={`${styles.button} ${styles.signOut}`}
+        >
           Sign Out
         </button>
       </div>
 
       <div className={styles.contentArea}>
         <div className={styles.gameTitle}>
-          
-        {/* <img src="/image/pawn.png" alt="Pawn Logo" /> */}
-        <Image src="/image/pawn.png" alt="Pawn Logo"/>
+          <img src="/image/pawn.png" alt="Pawn Logo" />
+          {/* <Image src="/image/pawn.png" alt="Pawn Logo"/> */}
           <h1>Pawn.com</h1>
         </div>
         {gameId && playerColor ? (

@@ -2,12 +2,12 @@
   "name": "chessproj",
   "version": "0.1.0",
   "private": true,
-  "scripts": {
-    "dev": "next dev",
-    "build": "next build",
-    "start": "next start",
-    "lint": "next lint"
-  },
+"scripts": {
+  "dev": "concurrently \"next dev\" \"npx ts-node server/server.ts\"",
+  "build": "next build",
+  "start": "concurrently \"next start\" \"npx ts-node server/server.ts\"",
+  "lint": "next lint"
+},
   "dependencies": {
     "@emotion/react": "^11.14.0",
     "@emotion/styled": "^11.14.0",
@@ -54,6 +54,7 @@
     "@types/react-dom": "^19",
     "@types/socket.io": "^3.0.2",
     "@types/ws": "^8.18.0",
+    "concurrently": "^9.1.2",
     "eslint": "^9",
     "eslint-config-next": "15.2.0",
     "sass": "^1.85.1",
