@@ -55,7 +55,7 @@ const Welcome: React.FC = () => {
     }
 
     socket.on("connect", () => {
-      console.log("✅ Socket connected:", socket.id);
+      console.log("✅ Socket connected :", socket.id);
       setIsConnected(true);
     });
 
