@@ -25,7 +25,7 @@ export const authOptions: NextAuthOptions = {
             id: user._id.toString(),
             name: user.name,
             email: user.email,
-            image: user.image || "https://via.placeholder.com/50", // Default image
+            image: user.image || "https://via.placeholder.com/50",
           };
         }
         return null;
@@ -42,15 +42,14 @@ export const authOptions: NextAuthOptions = {
         const newUser = await User.create({
           name: user.name,
           email: user.email,
-          image: user.image || profile?.picture || null, // Use Google picture if available
-          password:
-            account?.provider === "credentials" ? user.password : undefined,
+          image: user.image || profile?.picture || null,
+          password: account?.provider === "credentials" ? user.password : undefined,
         });
         user.id = newUser._id.toString();
         isNewUser = true;
       } else {
         user.id = existingUser._id.toString();
-        user.image = existingUser.image || user.image; // Preserve DB image if set
+        user.image = existingUser.image || user.image;
       }
 
       user.isNewUser = isNewUser;
@@ -61,7 +60,7 @@ export const authOptions: NextAuthOptions = {
         token.id = user.id;
         token.name = user.name;
         token.email = user.email;
-        token.picture = user.image; // Ensure image is stored in token
+        token.picture = user.image;
         token.isNewUser = user.isNewUser || false;
       }
       return token;
@@ -77,7 +76,7 @@ export const authOptions: NextAuthOptions = {
         id: token.id || token.sub,
         name: token.name,
         email: token.email,
-        image: token.picture || null, // Explicitly set image from token
+        image: token.picture || null,
       };
       session.isNewUser = token.isNewUser ?? false;
 
@@ -86,10 +85,10 @@ export const authOptions: NextAuthOptions = {
     },
   },
   pages: {
-    signIn: "/signin/signin", // Updated to match your folder structure
-    signOut: "/signin/signin",
-    error: "/signin/signin",
-    verifyRequest: "/signin/signin",
+    signIn: "/signin",
+    signOut: "/signin",
+    error: "/signin",
+    verifyRequest: "/signin",
     newUser: "/welcome",
   },
   session: {
